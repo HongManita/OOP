@@ -16,14 +16,14 @@ public class Court {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer court_id;
 	
-	private Integer court_name;
+	private String court_name;
 
 	public Court() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Court(Integer court_name) {
+	public Court(String court_name) {
 		super();
 		
 		this.court_name = court_name;
@@ -37,17 +37,20 @@ public class Court {
 		this.court_id = court_id;
 	}
 
-	public Integer getCourt_name() {
+	public String getCourt_name() {
 		return court_name;
 	}
-
-	public void setCourt_name(Integer court_name) {
+	
+	public void setCourt_name(String court_name) {
 		this.court_name = court_name;
 	}
+	
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "status_id")
 		private Court_status court_status;
+
 
 	public Court_status getCourt_status() {
 		return court_status;

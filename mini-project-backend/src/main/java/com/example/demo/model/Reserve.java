@@ -25,6 +25,37 @@ public class Reserve {
 	 private LocalTime time;
 	 
 	 
+	@ManyToOne
+	@JoinColumn(name = "court_id")
+	private Court court;
+
+	public Court getCourt() {
+		return court;
+	}
+
+	public void setCourt(Court court) {
+		this.court = court;
+	}
+	
+	
+	@ManyToOne
+    @JoinColumn(name = "user_id")
+	private Customer customer;
+
+	 
+	public Customer getCustomer() {
+		return customer;
+	}
+
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	
+	
+	
+
+
 	public LocalDate getDate() {
 		return date;
 	}
@@ -38,24 +69,8 @@ public class Reserve {
 		this.time = time;
 	}
 	
-	@ManyToOne
-    @JoinColumn(name = "user_id")
-	private Customer customer;
-
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
 	
-	@ManyToOne
-    @JoinColumn(name = "court_id")
-	private Court court;
-
-
-
-	public void setCourt(Court court) {
-		this.court = court;
-	}
+	
 
 	
 	

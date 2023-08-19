@@ -14,14 +14,14 @@ public class Court_status {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer Status_id;
 	
-	private Integer Status_name;
+	private String Status_name;
 
 	public Court_status() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Court_status(Integer status_id, Integer status_name) {
+	public Court_status(Integer status_id, String status_name) {
 		super();
 		Status_id = status_id;
 		Status_name = status_name;
@@ -35,11 +35,11 @@ public class Court_status {
 		Status_id = status_id;
 	}
 
-	public Integer getStatus_name() {
+	public String getStatus_name() {
 		return Status_name;
 	}
 
-	public void setStatus_name(Integer status_name) {
+	public void setStatus_name(String status_name) {
 		Status_name = status_name;
 	}
 
