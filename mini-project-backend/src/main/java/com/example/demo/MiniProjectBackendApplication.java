@@ -8,7 +8,7 @@ public class MiniProjectBackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MiniProjectBackendApplication.class, args);
-		System.out.println("Hello World!");
+		System.out.println("Hello My CourtBadmintion");
 	}
 	
 }

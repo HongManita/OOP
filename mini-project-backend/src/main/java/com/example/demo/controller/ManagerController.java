@@ -33,6 +33,24 @@ public class ManagerController {
 	private List<Manager> data = new ArrayList<Manager>();
 	
 	
+	@PostMapping("/loginManager")
+	public ResponseEntity<Object> loginManager(@RequestBody Manager loginRequest) {
+		try {
+
+			Optional<Manager> managerFound = managerRepository.findByUsernameContainingIgnoreCase(loginRequest.getM_username());
+			if (managerFound.isPresent() && managerFound.get().getM_password().equals(loginRequest.getM_password())) {
+				managerFound.get().setM_password(null);
+				return new ResponseEntity<>(managerFound, HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>("Invalid credentials.", HttpStatus.UNAUTHORIZED);
+			}
+		}catch(Exception e) {
+					System.out.println(e.getMessage());
+					return new ResponseEntity<>("Internal server error.", HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+	}
+	
+	
 	@GetMapping("/manager")
 	public ResponseEntity<Object> getManager(){
 		
@@ -43,6 +61,8 @@ public class ManagerController {
 			return new ResponseEntity<>("Internal server error", HttpStatus.OK);
 		}
 	}
+	
+	
 	
 	
 	@PostMapping("/manager")

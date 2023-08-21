@@ -32,6 +32,26 @@ public class CustomerController {
 	private List<Customer> data = new ArrayList<Customer>();
 	
 	
+	
+	
+	@PostMapping("/loginCustomer")
+	public ResponseEntity<Object> loginCustomer(@RequestBody Customer loginRequest) {
+		try {
+
+			Optional<Customer> customerFound = customerRepository.findByUsername(loginRequest.getUsername());
+			if (customerFound.isPresent() && customerFound.get().getPassword().equals(loginRequest.getPassword())) {
+				customerFound.get().setPassword(null);
+				return new ResponseEntity<>(customerFound, HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>("Invalid credentials.", HttpStatus.UNAUTHORIZED);
+			}
+		}catch(Exception e) {
+					System.out.println(e.getMessage());
+					return new ResponseEntity<>("Internal server error.", HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+	}
+	
+	
 	@GetMapping("/customer")
 	public ResponseEntity<Object> getCustomer(){
 		
