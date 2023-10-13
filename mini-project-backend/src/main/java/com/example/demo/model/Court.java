@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import java.sql.Time;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +19,7 @@ public class Court {
 	private Integer court_id;
 	
 	private String court_name;
+	private Time court_time;
 
 	public Court() {
 		super();
