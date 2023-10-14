@@ -19,7 +19,9 @@ public class Court {
 	private Integer court_id;
 	
 	private String court_name;
-	private Time court_time;
+	private String court_time;
+
+	
 
 	public Court() {
 		super();
@@ -48,7 +50,13 @@ public class Court {
 		this.court_name = court_name;
 	}
 	
-	
+	public String getCourt_time() {
+		return court_time;
+	}
+
+	public void setCourt_time(String court_time) {
+		this.court_time = court_time;
+	}
 	
 	@ManyToOne
 	@JoinColumn(name = "status_id")
